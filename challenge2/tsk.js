@@ -58,8 +58,8 @@ app.put("/tasks/:taskId", (req, res) => {
     }
     return task;
   });
-  const foundTask = tasks.find((task) => task.id == taskId);
-  if (!foundTask) {
+  const task = tasks.find((task) => task.id == taskId);
+  if (!task) {
     return res.status(404).json({
       message: "Task not found",
     });
@@ -73,8 +73,8 @@ app.put("/tasks/:taskId", (req, res) => {
 app.delete("/tasks/:taskId", (req, res) => {
   const { taskId } = req.params;
   tasks = tasks.filter((task) => task.id != taskId);
-  const foundTask = tasks.find((task) => task.id == taskId);
-  if (!foundTask) {
+  const task = tasks.find((task) => task.id == taskId);
+  if (!task) {
     return res.status(404).json({
       message: "Task not found",
     });
